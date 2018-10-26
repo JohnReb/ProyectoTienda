@@ -1,0 +1,69 @@
+{% extends 'base/index.html' %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
+  <a class="navbar-brand" href="#">Tienda</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Productos<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Categorias</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Costo</th>
+        <th scope="col">Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for producto in object_list %}
+      <tr>
+        <th scope="row">{{ producto.id }}</th>
+        <th scope="row">{{producto.Producto}}</th>
+        <td scope="row">{{producto.Descripcion}}</td>
+        <td scope="row" >{{producto.Costo}}</td>
+        <td scope="row" ><button type="button" class="btn btn-outline-primary">Editar</button>
+        <button type="button" class="btn btn-outline-danger">Eliminar</button></td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<button type="button" class="btn btn-primary btn-lg"><a href="{% url 'Productos:nuevoRegistro' %}" style="color: black">Agregar Producto</a></button>
+{% endblock %}

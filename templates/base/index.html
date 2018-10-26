@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %} Pag title {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Estilo para todas las paginas que hereden de esta plantilla-->
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/bootstrap.css' %}">
+
+    <!-- Bloque para incrustar otros css diferentes por pagina -->
+    {% block extracss %}        {% endblock %}
+
+    <!-- <script src="main.js"></script> -->
+</head>
+<body>
+    <header>{% block header %}{% endblock %}</header>
+
+    <div>{% block content %} Contenido {% endblock %}</div>
+
+    <footer>{% block footer %} pie de pagina {% endblock %}</footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>
