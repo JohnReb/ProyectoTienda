@@ -36,6 +36,22 @@ def carrito(request):
     }
     return render(request, 'carrito/ticket.html', contexto)
 
+def pagar(request):
+    datos = request.GET.get("productos")
+    datos = json.loads(datos)
+    # print datos
+    for prod in datos:
+        producto = Producto.objects.filter(pk=prod[0]).first()
+        cantidad = producto.Existencias
+        nueva_Existencia = int(cantidad)- int(datos[prod[0]]["cantidad"])
+        if nueva_Existencia < 0:
+            estatus = "No hay suficientes productos"
+        else:
+            producto.Existencias = nueva_Existencia
+            producto.save()
+            estatus="OK"
+    return HttpResponse(estatus)
+
 
 class ViewInfo(ListView):
     model = Producto
