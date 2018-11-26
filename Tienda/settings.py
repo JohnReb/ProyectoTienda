@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'Tienda.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tiendabd',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'NAME': 'JonathanReb$tiendabd',
+        'USER': 'JonathanReb',
+        'PASSWORD': 'John51079800Reb',
+        'HOST': 'JonathanReb.mysql.pythonanywhere-services.com',
         'PORT': '3306',
     }
 }
