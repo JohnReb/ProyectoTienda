@@ -1,0 +1,111 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Productos</title>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+      <div class="container">
+        <a href="../" class="navbar-brand">Tienda</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="{% url 'Productos:categorias' %}">Categorias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Productos</a>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.djangoproject.com/" target="_blank">Django MasterClass</a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+
+      <div class="page-header" id="banner">
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-6">
+            <h1>Top</h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navbar
+      ================================================== -->
+      <div class="bs-docs-section clearfix">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="bs-component">
+            	<table class="table table-hover">
+                <head>
+                  <tr>
+                    <th scope="col">Nombre del producto</th>
+                    <th scope="col">Precio p/u</th>
+                    <th scope="col">Unidades</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </head>
+                  	<script>
+                      var i;
+                      var datos = localStorage.getItem("Compra");
+                      var array = JSON.parse(datos);
+                      var total = 0;
+                      for (i=0;i<array.length; i = i + 4) {
+                          document.write("<tr>");
+                          document.write("<td>" + array[i+1] + "</td>");
+                          document.write("<td>" + array[i+2] + "</td>");
+                          document.write("<td>" + array[i+3] + "</td>");
+                          document.write("<td>" + array[i+2]*array[i+3] + "</td>");
+                          total = total + (array[i+2]*array[i+3]);
+                      }
+					          </script>
+                  <tr>
+                    <th scope="col">Total a Pagar</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <script>
+                          document.write("<td>" + total + "</td>");
+                    </script>
+                  </tr>
+              </table>
+            	<div class="row">
+                <div class="col">
+                    <a href="{% url 'Productos:tienda' %}" class="btn btn-info">Pagar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="width: 40%; position: relative; margin-left: 30%;">
+      <img class="card-img-top" src="checked.png" alt="Card image cap" style="width: 80%;">
+      <div class="card-body">
+        <h5 class="card-title">Gracias por tu compra</h5>
+        <a href="{% url 'Productos:tienda' %}" class="btn btn-primary">ir a Tienda</a>
+      </div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/functions/add.js' %}"></script>
+
+
+</body>
+</html>

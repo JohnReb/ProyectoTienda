@@ -1,13 +1,9 @@
 from django import forms
-from.models import *;
-from Apps.Productos.models import Producto;
+from  Apps.Productos.models import Producto, Categoria
 
 class ProductosForm(forms.ModelForm):
-
-  class meta:
-
+  class Meta:
     model = Producto
-
     fields = [
       'Producto',
       'Descripcion',
@@ -16,7 +12,6 @@ class ProductosForm(forms.ModelForm):
       'Existencias',
       'categoria',
     ]
-
     labels = {
       'Producto' : 'Nombre del producto',
       'Descripcion' : 'Descripcion del producto',
@@ -24,16 +19,29 @@ class ProductosForm(forms.ModelForm):
       'Disponibilidad' : 'Disponibilidad',
       'Existencias' : 'Existencias',
       'categoria' : 'Nombre de categoria',
-
     }
-
     widgets = {
-      'Producto': forms.TextInput(),
-      'Descripcion': forms.TextInput(),
-      'Costo': forms.TextInput(),
-      'Disponibilidad': forms.TextInput(),
-      'Existencias': forms.TextInput(),
-      'categoria': forms.TextInput(),
+      'Producto': forms.TextInput(attrs={'class': 'form-control'}),
+      'Descripcion': forms.TextInput(attrs={'class': 'form-control'}),
+      'Costo': forms.TextInput(attrs={'class': 'form-control'}),
+      'Disponibilidad': forms.TextInput(attrs={'class': 'form-control'}),
+      'Existencias': forms.TextInput(attrs={'class': 'form-control'}),
+      'categoria': forms.TextInput(attrs={'class': 'form-control'}),
     }
 
-    #attrs=({'class' : 'form-control'})
+#Form Categorias
+class CategoriasForm(forms.ModelForm):
+  class Meta:
+    model = Categoria
+    fields = [
+      'Categoria',
+      'FechaCreacion'
+    ]
+    labels = {
+      'Categoria': 'Nombre',
+      'FechaCreacion': 'Fecha de Creacion',
+    }
+    widgets = {
+      'Categoria': forms.TextInput(attrs={'class': 'form-control'}),
+      'FechaCreacion': forms.TextInput(attrs={'class':'form-comtrol'}),
+    }
