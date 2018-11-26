@@ -20,7 +20,7 @@
               <a class="nav-link" href="{% url 'Productos:categorias' %}">Categorias</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Productos</a>
+              <a class="nav-link" href="{% url 'Productos:producto' %}">Productos</a>
             </li>
           </ul>
 
@@ -85,7 +85,7 @@
               </table>
             	<div class="row">
                 <div class="col">
-                    <a href="{% url 'Productos:tienda' %}" class="btn btn-info">Pagar</a>
+                    <button type="button" class="btn btn-outline-success" onclick="pagar()">Pagar</button>
                 </div>
               </div>
             </div>
@@ -94,17 +94,9 @@
       </div>
     </div>
 
-    <div class="card" style="width: 40%; position: relative; margin-left: 30%;">
-      <img class="card-img-top" src="checked.png" alt="Card image cap" style="width: 80%;">
-      <div class="card-body">
-        <h5 class="card-title">Gracias por tu compra</h5>
-        <a href="{% url 'Productos:tienda' %}" class="btn btn-primary">ir a Tienda</a>
-      </div>
-    </div>
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="{% static 'js/bootstrap.js' %}"></script>
-<script src="{% static 'js/functions/add.js' %}"></script>
+<script src="{% static 'js/functions/pagar.js' %}"></script>
 
 
 </body>
