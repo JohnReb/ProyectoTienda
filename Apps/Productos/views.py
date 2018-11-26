@@ -64,9 +64,11 @@ def nuevoProducto(request):
             form.save()
         return redirect('Productos:producto')
     else:
-        form = ProductosForm()
-        cForm = CategoriasForm()
-    return render(request, 'productos/productoFormulario.html', {'form': form}, {'form': cForm})
+        contexto = {
+            'categorias': Categoria.objects.all(),
+            'form': ProductosForm()
+        }
+    return render(request, 'productos/productoFormulario.html', contexto)
 
 
 def editarProducto(request, idProducto):
